@@ -2,11 +2,15 @@
 
 This section provides information on all the search related endpoints.
 
-## List Users
+## Get Loan Applications Follow Ups
 
 **Endpoint:** `GET /api/search`
 
-**Description:** Retrieves a list of follow up loan applications.
+**Description:** Retrieves a list of loan application follow ups.
+
+**Parameters:**
+
+
 
 **Response:**
 
@@ -19,3 +23,4 @@ This section provides information on all the search related endpoints.
   },
   ...
 ]
+
