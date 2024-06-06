@@ -1,12 +1,12 @@
-# User Endpoints
+# Search Endpoints
 
-This section provides information on all the user-related endpoints.
+This section provides information on all the search related endpoints.
 
 ## List Users
 
-**Endpoint:** `GET /users`
+**Endpoint:** `GET /api/search`
 
-**Description:** Retrieves a list of all users.
+**Description:** Retrieves a list of follow up loan applications.
 
 **Response:**
 
