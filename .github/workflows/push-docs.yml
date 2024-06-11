@@ -15,8 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout central documentation repository
         uses: actions/checkout@v3
+        with:
+          repository: RuanOneill/api-documentation
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create documentation directory
         run: mkdir -p docs/${{ inputs.service-name }}
