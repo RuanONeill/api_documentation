@@ -2,6 +2,10 @@
 
 Welcome to the API documentation for **My Project**. This guide provides all the information you need to use and integrate with our API.
 
+## API Documentation
+
+For detailed API documentation, visit [API Docs](swagger.html).
+
 ## Table of Contents
 
 - [Getting Started](getting-started.md)
