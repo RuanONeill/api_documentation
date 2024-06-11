@@ -4,7 +4,7 @@ Welcome to the API documentation for **My Project**. This guide provides all the
 
 ## API Documentation
 
-For detailed API documentation, visit [API Docs](swagger.html).
+<iframe src="swagger.html" width="100%" height="600px"></iframe>
 
 ## Table of Contents
 
