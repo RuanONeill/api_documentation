@@ -1,5 +1,9 @@
 name: Push Documentation
 
+permissions:
+  contents: read
+  packages: write
+
 on:
   workflow_call:
     inputs:
