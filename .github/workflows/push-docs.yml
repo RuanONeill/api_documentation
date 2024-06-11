@@ -26,7 +26,7 @@ jobs:
         run: mkdir -p docs/${{ inputs.service-name }}
 
       - name: Save Swagger JSON
-        run: echo "${{ inputs.swagger-json }}" > docs/${{ inputs.service-name }}/swagger.json
+        run: echo "${{ inputs.swagger-json }}" | base64 --decode > docs/${{ inputs.service-name }}/swagger.json
 
       - name: Commit and Push changes
         run: |
