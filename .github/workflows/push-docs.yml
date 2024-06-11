@@ -9,7 +9,11 @@ on:
       swagger-json:
         required: true
         type: string
-
+    secrets:
+      GITHUB_TOKEN:
+        description: 'A token passed from the caller workflow'
+        required: false
+        
 jobs:
   push-docs:
     runs-on: ubuntu-latest
