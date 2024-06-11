@@ -20,7 +20,7 @@ jobs:
         with:
           repository: RuanONeill/api_documentation
           ref: main
-          token: ${{ secrets.PH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN  }}
 
       - name: Create documentation directory
         run: mkdir -p docs/${{ inputs.service-name }}
