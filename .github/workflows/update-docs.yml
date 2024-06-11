@@ -1,4 +1,4 @@
-name: Push Documentation
+name: Update Documentation
 
 on:
   workflow_call:
@@ -11,7 +11,7 @@ on:
         type: string
 
 jobs:
-  push-docs:
+  update-docs:
     runs-on: ubuntu-latest
 
     steps:
