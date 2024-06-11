@@ -18,7 +18,7 @@ jobs:
       - name: Checkout central documentation repository
         uses: actions/checkout@v3
         with:
-          repository: RuanONeill/api-documentation
+          repository: RuanONeill/api_documentation
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
