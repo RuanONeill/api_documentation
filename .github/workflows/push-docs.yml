@@ -10,7 +10,7 @@ on:
         required: true
         type: string
     secrets:
-      GITHUB_TOKEN:
+      token:
         description: 'A token passed from the caller workflow'
         required: false
         
