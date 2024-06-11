@@ -4,56 +4,7 @@ Welcome to the API documentation for **My Project**. This guide provides all the
 
 ## API Documentation
 
-```html
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API Documentation</title>
-  <link rel="stylesheet" type="text/css" href="swagger-ui/swagger-ui.css">
-  <link rel="icon" type="image/png" href="swagger-ui/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="swagger-ui/favicon-16x16.png" sizes="16x16" />
-  <style>
-    html {
-      box-sizing: border-box;
-      overflow: -moz-scrollbars-vertical;
-      overflow-y: scroll;
-    }
-
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
-    }
-
-    body {
-      margin: 0;
-      background: #fafafa;
-    }
-  </style>
-</head>
-<body>
-  <div id="swagger-ui"></div>
-  <script src="swagger-ui/swagger-ui-bundle.js"></script>
-  <script src="swagger-ui/swagger-ui-standalone-preset.js"></script>
-  <script>
-        window.onload = function() {
-            const ui = SwaggerUIBundle({
-                url: "TestActions/swagger.json",
-                dom_id: '#swagger-ui',
-                presets: [
-                    SwaggerUIBundle.presets.apis,
-                    SwaggerUIStandalonePreset
-                ],
-                layout: "StandaloneLayout"
-            })
-            window.ui = ui
-        }
-  </script>
-</body>
-</html>
-```
+<iframe src="docs/swagger.html" width="100%" height="600px"></iframe>
 
 ## Table of Contents
 
