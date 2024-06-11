@@ -1,12 +1,5 @@
 name: Push Documentation
 
-permissions:
-  actions: write       # Necessary to cancel workflow executions
-  checks: write        # Necessary to write reports
-  pull-requests: write # Necessary to comment on PRs
-  contents: read
-  packages: write
-
 on:
   workflow_call:
     inputs:
@@ -27,7 +20,7 @@ jobs:
         with:
           repository: RuanONeill/api_documentation
           ref: main
-          token: ${{ secrets.GITHUB_TOKEN  }}
+          token: ${{ secrets.REPO_ACCESS  }}
 
       - name: Create documentation directory
         run: mkdir -p docs/${{ inputs.service-name }}
