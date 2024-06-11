@@ -1,0 +1,1671 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SF.Services.BankAndIDCheck",
+    "version": "16.3.0.0"
+  },
+  "paths": {
+    "/api/BankAndIDChecks": {
+      "post": {
+        "tags": [
+          "BankAndIDChecks"
+        ],
+        "summary": "Creates a bank and ID check request.",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "requestBody": {
+          "description": "Bank and ID check request",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/BankAndIDChecks/{id}/responses/latest": {
+      "get": {
+        "tags": [
+          "BankAndIDChecks"
+        ],
+        "summary": "Retrieves a bank and ID check response.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the bank and ID check that needs to be retrieved",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/BankAndIDChecks/resources": {
+      "get": {
+        "tags": [
+          "BankAndIDChecks"
+        ],
+        "summary": "Retrieves manual checks ui resources.",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.ManualChecksResources"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.ManualChecksResources"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.ManualChecksResources"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/BankAndIDChecks/{id}": {
+      "put": {
+        "tags": [
+          "BankAndIDChecks"
+        ],
+        "summary": "Updates the status of a bank and ID check request.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the request for which the status update applies",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "createCallbackRequest",
+            "in": "query",
+            "description": "Bool",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "schema": { }
+          }
+        ],
+        "requestBody": {
+          "description": "For each check the new status and, when new status is awaiting documentation, a list of supporting documents required",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.CheckStatusUpdate"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.CheckStatusUpdate"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.CheckStatusUpdate"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.CheckStatusUpdate"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/BankAndIDChecks/{id}/details": {
+      "get": {
+        "tags": [
+          "BankAndIDChecks"
+        ],
+        "summary": "Returns a bank and ID check request with current address and response.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the request concerned",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "isBorrowJourney",
+            "in": "query",
+            "description": "Is this called from the borrow journey, if true returns fewer objects",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.BankAndIdCheckRequestDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.BankAndIdCheckRequestDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.BankAndIdCheckRequestDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/BankAndIDChecks/{accountId}/getLatestRequest": {
+      "get": {
+        "tags": [
+          "BankAndIDChecks"
+        ],
+        "summary": "Returns a bank and ID check request with matching parameter details.",
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "The unique identifier of the account concerned",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "productCode",
+            "in": "query",
+            "description": "The product code to filter for specific product",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Common.Enums.ProductCode"
+            }
+          },
+          {
+            "name": "bankAccountNumber",
+            "in": "query",
+            "description": "bank account number to be matched",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "sortCode",
+            "in": "query",
+            "description": "sort to be matched",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/BankAndIDChecks/GetThirdPartyKey": {
+      "post": {
+        "tags": [
+          "BankAndIDChecks"
+        ],
+        "summary": "Fetches third party key for check.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Unique identifier of the request for which the key is being fetched",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/BankAndIDChecks/{id}/supportingdocuments": {
+      "post": {
+        "tags": [
+          "BankAndIDChecks"
+        ],
+        "summary": "Upload new supporting document for a BankAndIDCheckRequest Id",
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "query",
+            "description": "Account Id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "BankAndIDCheck Request Id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "uploadedBy",
+            "in": "query",
+            "description": "Uploaded By",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fileName",
+            "in": "query",
+            "description": "File Name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "checkType",
+            "in": "query",
+            "description": "BankAndIDCheckType",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckType"
+            }
+          },
+          {
+            "name": "documentType",
+            "in": "query",
+            "description": "DocumentType",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.DocumentType"
+            }
+          },
+          {
+            "name": "documentSubType",
+            "in": "query",
+            "description": "DocumentSubType",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.DocumentSubType"
+            }
+          },
+          {
+            "name": "message",
+            "in": "query",
+            "description": "Message",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "productCode",
+            "in": "query",
+            "description": "productCode",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Common.Enums.ProductCode"
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "requestBody": {
+          "description": "Supporting document content bytes",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ScheduledActions/executions": {
+      "post": {
+        "tags": [
+          "ScheduledActions"
+        ],
+        "summary": "Executes tasks required to be run on regular intervals and returns count of tasks run",
+        "parameters": [
+          {
+            "name": "runInterval",
+            "in": "query",
+            "description": "Enum value specifying which scheduled actions to run as defined by run interval",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SF.Common.Enums.RunInterval"
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api": {
+      "get": {
+        "tags": [
+          "Service"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SupportingDocuments/{id}": {
+      "post": {
+        "tags": [
+          "SupportingDocuments"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "documentSubType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.DocumentSubType"
+            }
+          },
+          {
+            "name": "productCode",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Common.Enums.ProductCode"
+            }
+          },
+          {
+            "name": "supportingDocumentFile",
+            "in": "header",
+            "description": "Upload File",
+            "required": true,
+            "schema": {
+              "type": "file",
+              "default": "Bearer "
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "supportingDocumentFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "supportingDocumentFile": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "SupportingDocuments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.SupportingDocumentStatus"
+            }
+          },
+          {
+            "name": "message",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.SupportingDocument"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.SupportingDocument"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.SupportingDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/SupportingDocuments/{id}/Raw": {
+      "post": {
+        "tags": [
+          "SupportingDocuments"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "uploadedBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fileName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "documentSubType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.DocumentSubType"
+            }
+          },
+          {
+            "name": "productCode",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/SF.Common.Enums.ProductCode"
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Webhooks": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Webhook for third party updates",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Unique identifier of the request for which the status update applies",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "apiKey",
+            "in": "query",
+            "description": "Api Key used to authenticate caller.",
+            "required": true,
+            "schema": { }
+          }
+        ],
+        "requestBody": {
+          "description": "Webhook request details",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.WebHookRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.WebHookRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.WebHookRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.WebHookRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Microsoft.EntityFrameworkCore.EntityState": {
+        "enum": [
+          "Detached",
+          "Unchanged",
+          "Deleted",
+          "Modified",
+          "Added"
+        ],
+        "type": "string"
+      },
+      "SF.Common.Enums.BankAndIDCheckRequestStatus": {
+        "enum": [
+          "NotRequired",
+          "Requested",
+          "Successful",
+          "Failed",
+          "ManualReview",
+          "WaitingDocumentation",
+          "Error",
+          "TimedOut",
+          "NewBankDetailsRequested",
+          "PendingManualCheck",
+          "PendingAutomatedCheck",
+          "Expired"
+        ],
+        "type": "string"
+      },
+      "SF.Common.Enums.BankAndIDCheckType": {
+        "enum": [
+          "Bank",
+          "ID",
+          "BankAndID"
+        ],
+        "type": "string"
+      },
+      "SF.Common.Enums.ProductCode": {
+        "enum": [
+          "UNK",
+          "LOAN",
+          "SAVE",
+          "HTS",
+          "ADV",
+          "PROT",
+          "APPL",
+          "FWH",
+          "BPL",
+          "CRSC",
+          "SCAL",
+          "LRN",
+          "NYBL",
+          "SMRT",
+          "NYBF",
+          "MONOL",
+          "NSFWH",
+          "WR",
+          "Any",
+          "TDCLoan"
+        ],
+        "type": "string"
+      },
+      "SF.Common.Enums.RunInterval": {
+        "enum": [
+          "DoNotRun",
+          "OneMinute",
+          "FiveMinutes",
+          "FifteenMinutes",
+          "ThirtyMinutes",
+          "OneHour",
+          "DailyAtStart",
+          "ThreeHours",
+          "SixHours",
+          "TenHours",
+          "OneDay",
+          "DailyAtEnd",
+          "OncePerWeek",
+          "OncePerMonth"
+        ],
+        "type": "string"
+      },
+      "SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityStateOverride": {
+            "$ref": "#/components/schemas/Microsoft.EntityFrameworkCore.EntityState"
+          },
+          "employeeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "checksToPerform": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckType"
+          },
+          "bankCheckStatus": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckRequestStatus"
+          },
+          "idCheckStatus": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckRequestStatus"
+          },
+          "callbackUri": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "otherNames": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountType": {
+            "type": "string",
+            "nullable": true
+          },
+          "bankName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bankCheckMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "idCheckMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequestAddress"
+            },
+            "nullable": true
+          },
+          "responses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckResponse"
+            },
+            "nullable": true
+          },
+          "supportingDocuments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.SupportingDocument"
+            },
+            "nullable": true
+          },
+          "thirdPartyValidationDetail": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.ThirdPartyValidationDetail"
+          },
+          "providerRedirectUri": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "productCode": {
+            "$ref": "#/components/schemas/SF.Common.Enums.ProductCode"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.BankAndIdCheckProvider"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequestAddress": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityStateOverride": {
+            "$ref": "#/components/schemas/Microsoft.EntityFrameworkCore.EntityState"
+          },
+          "bankAndIDCheckRequestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bankAndIDCheckRequest": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+          },
+          "abodeNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "buildingNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "buildingName": {
+            "type": "string",
+            "nullable": true
+          },
+          "street": {
+            "type": "string",
+            "nullable": true
+          },
+          "town": {
+            "type": "string",
+            "nullable": true
+          },
+          "postCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckResponse": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityStateOverride": {
+            "$ref": "#/components/schemas/Microsoft.EntityFrameworkCore.EntityState"
+          },
+          "didBankCheck": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "didIDCheck": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bankAndIDCheckRequestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bankAndIDCheckRequest": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+          },
+          "checksPerformed": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckType"
+          },
+          "bankCheckStatus": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.CheckResponseStatus"
+          },
+          "idCheckStatus": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.CheckResponseStatus"
+          },
+          "bankCheckMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "idCheckMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "responseDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "request": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "response": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Entities.SupportingDocument": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityStateOverride": {
+            "$ref": "#/components/schemas/Microsoft.EntityFrameworkCore.EntityState"
+          },
+          "bankAndIDCheckRequestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bankAndIDCheckRequest": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+          },
+          "checkType": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckType"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.DocumentType"
+          },
+          "documentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "uploadedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "uploadedDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "reviewedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "reviewedDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.SupportingDocumentStatus"
+          },
+          "documentSubType": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.DocumentSubType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Entities.ThirdPartyValidationDetail": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityStateOverride": {
+            "$ref": "#/components/schemas/Microsoft.EntityFrameworkCore.EntityState"
+          },
+          "bankAndIDCheckRequestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bankAndIDCheckRequest": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequest"
+          },
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Enums.BankAndIdCheckProvider": {
+        "enum": [
+          "Transunion",
+          "Plaid",
+          "TransUnionUS",
+          "Experian"
+        ],
+        "type": "string"
+      },
+      "SF.Services.BankAndIDCheck.Common.Enums.BankCheckActions": {
+        "enum": [
+          "Accept",
+          "RequestNewBankDetails",
+          "RequestNewDocuments",
+          "Decline"
+        ],
+        "type": "string"
+      },
+      "SF.Services.BankAndIDCheck.Common.Enums.CheckResponseStatus": {
+        "enum": [
+          "NotRequired",
+          "DocumentationRequired",
+          "Passed",
+          "Failed",
+          "TimedOut",
+          "NewDetailsRequired"
+        ],
+        "type": "string"
+      },
+      "SF.Services.BankAndIDCheck.Common.Enums.DocumentSubType": {
+        "enum": [
+          "Unknown",
+          "Passport",
+          "DrivingLicense",
+          "NationalIDCard",
+          "NeedOfNamChange",
+          "MarriageCertificate",
+          "IDDocument"
+        ],
+        "type": "string"
+      },
+      "SF.Services.BankAndIDCheck.Common.Enums.DocumentType": {
+        "enum": [
+          "ProofOfID",
+          "ProofOfAddress",
+          "ProofOfNameChange",
+          "BankStatement"
+        ],
+        "type": "string"
+      },
+      "SF.Services.BankAndIDCheck.Common.Enums.IDCheckActions": {
+        "enum": [
+          "Accept",
+          "RequestIDDocuments",
+          "Decline"
+        ],
+        "type": "string"
+      },
+      "SF.Services.BankAndIDCheck.Common.Enums.SupportingDocumentStatus": {
+        "enum": [
+          "Pending",
+          "Accepted",
+          "Rejected"
+        ],
+        "type": "string"
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.BankAndIdCheckRequestDetails": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "employeeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isBankCheckRequired": {
+            "type": "boolean"
+          },
+          "isIDCheckRequired": {
+            "type": "boolean"
+          },
+          "bankCheckStatus": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckRequestStatus"
+          },
+          "idCheckStatus": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckRequestStatus"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "otherNames": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "supportingDocuments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.SupportingDocument"
+            },
+            "nullable": true
+          },
+          "activeAddress": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckRequestAddress"
+          },
+          "latestResponse": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.BankAndIDCheckResponse"
+          },
+          "bankCheckMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "idCheckMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "provider": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.BankAndIdCheckProvider"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.BankCheckResource": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.BankCheckActions"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.Document"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.CheckStatusUpdate": {
+        "type": "object",
+        "properties": {
+          "checkType": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckRequestStatus"
+          },
+          "supportingDocuments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Entities.SupportingDocument"
+            },
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.Document": {
+        "type": "object",
+        "properties": {
+          "documentType": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.DocumentType"
+          },
+          "documentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.IDCheckResource": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Enums.IDCheckActions"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.ManualChecksResources": {
+        "type": "object",
+        "properties": {
+          "bankCheckResources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.BankCheckResource"
+            },
+            "nullable": true
+          },
+          "idCheckResources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.IDCheckResource"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.Response": {
+        "type": "object",
+        "properties": {
+          "bankAndIDCheckRequestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "checksToPerform": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckType"
+          },
+          "bankCheckStatus": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckRequestStatus"
+          },
+          "idCheckStatus": {
+            "$ref": "#/components/schemas/SF.Common.Enums.BankAndIDCheckRequestStatus"
+          },
+          "bankCheckMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "idCheckMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "providerToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.WebHookError": {
+        "type": "object",
+        "properties": {
+          "displayMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SF.Services.BankAndIDCheck.Common.Models.WebHookRequest": {
+        "type": "object",
+        "properties": {
+          "webHookType": {
+            "type": "string",
+            "nullable": true
+          },
+          "webhookCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemId": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountId": {
+            "type": "string",
+            "nullable": true
+          },
+          "error": {
+            "$ref": "#/components/schemas/SF.Services.BankAndIDCheck.Common.Models.WebHookError"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Please enter JWT with Bearer into field",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
