@@ -1,0 +1,49 @@
+name: Push Documentation
+
+on:
+  workflow_call:
+    inputs:
+      service-name:
+        required: true
+        type: string
+      swagger-json:
+        required: true
+        type: string
+      framework:
+        required: true
+        type: string
+      packages:
+        required: true
+        type: string
+
+jobs:
+  push-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create documentation directory
+        run: mkdir -p docs/${{ inputs.service-name }}
+
+      - name: Save Swagger JSON
+        run: echo "${{ inputs.swagger-json }}" > docs/${{ inputs.service-name }}/swagger.json
+
+      - name: Save Framework Information
+        run: echo "Target Framework: ${{ inputs.framework }}" > docs/${{ inputs.service-name }}/info.txt
+
+      - name: Save Package References
+        run: |
+          echo "Package References:" >> docs/${{ inputs.service-name }}/info.txt
+          echo "${{ inputs.packages }}" | tr ' ' '\n' >> docs/${{ inputs.service-name }}/info.txt
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git commit -m "Update documentation for ${{ inputs.service-name }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
